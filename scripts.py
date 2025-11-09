@@ -1,3 +1,5 @@
+import random
+
 from datacenter import models
 
 COMMENDATIONS = [
@@ -21,8 +23,6 @@ def find_schoolkid(child_name):
 
 
 def create_commendation(child, lesson):
-    import random
-
     one_random_lesson = (
         Lesson.objects.filter(year_of_study=6, group_letter="А", subject__title=lesson)
         .order_by("?")
@@ -49,8 +49,3 @@ def fix_marks(child):
     schoolkid = Marks.objects.filter(points__lt=4, schoolkid=find_schoolkid(child))
     schoolkid.update(points=5)
     return "Оценки исправлены"
-
-def main():
-    
-if __name__ == "__main__":
-    main()
